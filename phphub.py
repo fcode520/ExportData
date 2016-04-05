@@ -135,6 +135,7 @@ class phDb:
                 body_original=tmpbody_original
         else:
             body_original=repliesObj['message']
+        #        \@(\S)+   |\@(\S+)\s
         body=self.markdownToHtml(body_original)
         zhuanyi_body=body.replace('\'','\\\'')
         zhuanyi_body_original=body_original.replace('\'','\\\'')
