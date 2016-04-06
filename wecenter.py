@@ -41,3 +41,9 @@ class WenCenterdb:
         else:
             mysql = "SELECT * FROM aws_article_comments"
         return self.Eexcul(mysql)
+    def GetHeaders(self,limit=0):
+        if limit > 0:
+            mysql = "SELECT * FROM `aws_users` WHERE `avatar_file` !="" limit %d" % (limit)
+        else:
+            mysql = "SELECT * FROM `aws_users` WHERE `avatar_file` !='' "
+        return self.Eexcul(mysql)

@@ -69,8 +69,26 @@ def ImportReplies():
         rst = phpdb.InsertReplies(row)
 
     print rst
+def UpdateTopicesLastReply():
+    phpdb = phphub.phDb()
+    result = phpdb.UpdateTopicesLastReply()
 
+def ImportHeader():
+    WeDb = wecenter.WenCenterdb()
+    db = WeDb.OpenDb('192.168.10.10', 'homestead', 'secret', 'wecenter')
+    if db:
+        print("连接成功")
+    else:
+        print("连接失败")
+    phpdb = phphub.phDb()
+    result = WeDb.GetHeaders()
+    for row in result:
+        rst = phpdb.InsertHeaders(row)
+    print rst
 if __name__ == '__main__':
-    # ImportUserTable()
-    # ImportTopics()
+
+    ImportUserTable()
+    ImportTopics()
     ImportReplies()
+    UpdateTopicesLastReply()
+    ImportHeader()
